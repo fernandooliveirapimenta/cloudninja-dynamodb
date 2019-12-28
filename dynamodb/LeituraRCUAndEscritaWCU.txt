@@ -1,0 +1,36 @@
+Unidade de capacidade de escrita (WCU):
+Represanta escrita de de 1 item por segundo para item acima de 1KB
+
+ex1: 10 items por segundo de 2 KB cada
+r = 2 * 10 = 20 WCU
+
+ex2: 6 items por segunde de 4.5 KB cada
+r = 6 * 5 = 30 WCU
+
+ex3: 25 items por segunde de 400 KB cada
+r = 25 * 400 = 10000
+
+
+Leitura:
+
+Fortemente Consistente:
+escrevo nesse segundo e tenho a atualizacao de todo cluster antes de ler
+
+Eventualmente Consistente:
+padrao no dynamodb
+se eu escrevo nesse segundo e tento ler nesse segundo o dado ainda esta propagando para todo o cluster dynamodb, com isso pode vir nulo ou dado antigo
+
+Unidade de capacidade de leitura (RCU):
+1 unidade de capacidade de leitura RCU :
+- 1 (leitura fortemente consistente por segundo) para items > 4 KB
+- 2 (leitura eventualmente consistende por segundo para items > 4 KB
+- items maiores que 4 KB podem consumir mais RCU
+
+ex1: 10 forte de 4KB
+r = 10 * 4KB/4KB = 10 RCU
+
+ex2: 16 eventuais de 6KB
+r = (16/2) * (12KB/4KB) = 24 RCU
+
+ex3: 10 forte 6KB
+r = 10 * 8KB/4KB= 20 RCU

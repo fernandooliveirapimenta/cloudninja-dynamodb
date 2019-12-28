@@ -1,0 +1,5 @@
+Particao (node no cluster) por isso eviter hot partition
+Max 3000 Unidade de leitura (RCU)
+Max 1000 Unidade de escrita (WCU)
+Max de 10GB por particao
+
