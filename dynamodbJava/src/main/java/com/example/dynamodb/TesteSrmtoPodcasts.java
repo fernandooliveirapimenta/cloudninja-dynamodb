@@ -6,6 +6,7 @@ import com.example.dynamodb.model.SensoriamentoSessao;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 public class TesteSrmtoPodcasts {
 
@@ -59,5 +60,17 @@ public class TesteSrmtoPodcasts {
         final PaginatedQueryList<SensoriamentoSessao> query =
                 dynamoDBMapper.query(SensoriamentoSessao.class, queryExpression);
         query.forEach(System.out::println);
+
+        save(dynamoDBMapper);
+    }
+
+    private static void save(DynamoDBMapper mapper){
+        SensoriamentoSessao s = new SensoriamentoSessao();
+        s.setHash("PODCASTS#"+ UUID.randomUUID().toString());
+        s.setRange("#METADATA#43743772809");
+        mapper.save(s);
+
+        mapper.save(s);
+
     }
 }
