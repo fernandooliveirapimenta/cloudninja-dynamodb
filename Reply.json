@@ -2,7 +2,7 @@
     "Reply": [
         {
             "PutRequest": {
-                "Item": {
+                "Iteam": {
                     "Id": {
                         "S": "Amazon DynamoDB#DynamoDB Thread 1"
                     },
